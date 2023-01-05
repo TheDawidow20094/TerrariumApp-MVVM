@@ -1,0 +1,38 @@
+﻿<Window x:Class="TerrariumApp.Views.Windows.LoadingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TerrariumApp.Views.Windows"
+        mc:Ignorable="d"
+        x:Name="wLoadingWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" Closing="wLoadingWindow_Closing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="0.8*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <TextBlock x:Name="txtblLoadingText" HorizontalAlignment="Center" FontWeight="Bold" FontSize="45" Margin="0,20,0,0"/>
+        </StackPanel>
+        <Grid Grid.Row="1" Margin="20">
+            <Grid.Resources>
+                <Storyboard x:Key="walkStoryboard">
+                    <ThicknessAnimation From="0,0,0,0" To="20,0,0,0"
+                         Duration="0:0:0.5"
+                         RepeatBehavior="Forever"
+                         AutoReverse="True"
+                         Storyboard.TargetProperty="Margin">
+                    </ThicknessAnimation>
+                </Storyboard>
+            </Grid.Resources>
+            <Image Source="pack://application:,,,/Resources/Images/loadingSpider.png"
+         Margin="0,0,0,0">
+                <Image.Triggers>
+                    <EventTrigger RoutedEvent="Loaded">
+                        <BeginStoryboard Storyboard="{StaticResource walkStoryboard}"/>
+                    </EventTrigger>
+                </Image.Triggers>
+            </Image>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,130 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Style x:Key="MenuToggleButtonsStyle" TargetType="ToggleButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Grid
+                        x:Name="ToggleButtonGrid"
+                        Height="70"
+                        Background="Transparent">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Rectangle
+                            x:Name="ButtonRectangle"
+                            Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            Fill="Transparent"
+                            Width="10">
+                        </Rectangle>
+                        <TextBlock
+                            Grid.Column="1"
+                            Text="{TemplateBinding Content}"
+                            Foreground="#EDEDED"
+                            TextAlignment="Center"
+                            FontWeight="Bold"
+                            VerticalAlignment="Center"
+                            Height="auto"
+                            Margin="0,0,10,0"
+                            FontSize="16"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger
+                            Property="IsMouseOver"
+                            Value="true">
+                            <Setter
+                                Property="Background"
+                                TargetName="ToggleButtonGrid"
+                                Value="#FF424041"/>
+                        </Trigger>
+                        <Trigger
+                            Property="IsChecked"
+                            Value="True">
+                            <Setter
+                                Property="Background"
+                                TargetName="ToggleButtonGrid"
+                                Value="#FF424041"/>
+                            <Setter
+                                Property="Fill"
+                                TargetName="ButtonRectangle"
+                                Value="#0078d7"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="InnerMenuToggleButtonStyle" TargetType="ToggleButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Grid
+                        x:Name="ToggleButtonGrid"
+                        Height="70"
+                        Background="#FF424041">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Rectangle
+                            x:Name="ButtonRectangle"
+                            Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            Fill="Transparent"
+                            Width="10">
+                        </Rectangle>
+                        <TextBlock
+                            Grid.Column="1"
+                            Text="{TemplateBinding Content}"
+                            Foreground="#EDEDED"
+                            TextAlignment="Center"
+                            FontWeight="Bold"
+                            VerticalAlignment="Center"
+                            Height="auto"
+                            Margin="0,0,10,0"
+                            FontSize="16"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger
+                            Property="IsMouseOver"
+                            Value="true">
+                            <Setter
+                                Property="Background"
+                                TargetName="ToggleButtonGrid"
+                                Value="#5e5b5c"/>
+                        </Trigger>
+                        <Trigger
+                            Property="IsChecked"
+                            Value="True">
+                            <Setter
+                                Property="Background"
+                                TargetName="ToggleButtonGrid"
+                                Value="#5e5b5c"/>
+                            <Setter
+                                Property="Fill"
+                                TargetName="ButtonRectangle"
+                                Value="#0078d7"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="UserControlStyle" TargetType="UserControl">
+        <Setter Property="Background" Value="#FF4f4a4d"/>
+    </Style>
+
+</ResourceDictionary>

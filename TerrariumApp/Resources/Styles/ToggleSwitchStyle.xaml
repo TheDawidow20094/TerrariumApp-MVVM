@@ -1,0 +1,86 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="ToggleSwitch" TargetType="ToggleButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Grid
+                            Width="56"
+                            Height="28">
+                        <Border
+                                x:Name="ToggleSwitch_Back"
+                                Width="56"
+                                Height="28"
+                                CornerRadius="14"
+                                Background="#FFD6CFD3"/>
+                        <Ellipse
+                                x:Name="ToggleSwitch_Front"
+                                Width="19"
+                                Height="19"
+                                VerticalAlignment="Center"
+                                Fill="Gray" RenderTransformOrigin="0.5,0.5">
+                            <Ellipse.RenderTransform>
+                                <TranslateTransform X="-13"/>
+                            </Ellipse.RenderTransform>
+                        </Ellipse>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation
+                                                Duration="0:0:0.400"
+                                                From="#FFD6CFD3"
+                                                To="#FF93D68A"
+                                                Storyboard.TargetName="ToggleSwitch_Back"
+                                                Storyboard.TargetProperty="Background.Color" />
+                                        <ColorAnimation
+                                                Duration="0:0:0.400"
+                                                From="Gray"
+                                                To="whitesmoke"
+                                                Storyboard.TargetName="ToggleSwitch_Front"
+                                                Storyboard.TargetProperty="Fill.Color" />
+                                        <DoubleAnimation
+                                                Duration="0:0:0.400"
+                                                From="-13"
+                                                To="13"
+                                                Storyboard.TargetName="ToggleSwitch_Front"
+                                                Storyboard.TargetProperty="(Ellipse.RenderTransform).(TranslateTransform.X)"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation
+                                                Duration="0:0:0.400"
+                                                From="#FF93D68A"
+                                                To="#FFD6CFD3"
+                                                Storyboard.TargetName="ToggleSwitch_Back"
+                                                Storyboard.TargetProperty="Background.Color" />
+                                        <ColorAnimation
+                                                Duration="0:0:0.400"
+                                                From="whitesmoke"
+                                                To="Gray"
+                                                Storyboard.TargetName="ToggleSwitch_Front"
+                                                Storyboard.TargetProperty="Fill.Color" />
+                                        <DoubleAnimation
+                                                Duration="0:0:0.400"
+                                                From="13"
+                                                To="-13"
+                                                Storyboard.TargetName="ToggleSwitch_Front"
+                                                Storyboard.TargetProperty="(Ellipse.RenderTransform).(TranslateTransform.X)"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

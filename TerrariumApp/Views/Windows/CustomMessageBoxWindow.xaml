@@ -1,0 +1,25 @@
+﻿<Window x:Class="TerrariumApp.Views.Windows.CustomMessageBoxWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TerrariumApp.Views.Windows"
+        mc:Ignorable="d"
+        x:Name="wCustomMessageBox" SizeToContent="WidthAndHeight" MinHeight="250" MaxHeight="600" MinWidth="300" MaxWidth="500" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow" ResizeMode="NoResize" Closing="wCustomMessageBox_Closing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Image x:Name="image" Height="50"/>
+                <TextBlock x:Name="txtblCaption" FontSize="20" Margin="20,0,0,0"/>
+        </StackPanel>
+            <TextBlock x:Name="txtblContent" Grid.Row="1" TextWrapping="Wrap" FontSize="15" HorizontalAlignment="Center" Margin="10,30,10,0"/>
+        <StackPanel Grid.Row="2" VerticalAlignment="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,0,10,20">
+            <Button x:Name="btnOkYes" Content="OK" Width="200" Height="40" Click="ButtonsClick_Click" Style="{StaticResource GreenButtonStyle}"/>
+            <Button x:Name="btnNo" Content="No" Width="200" Height="40" Margin="30,0,0,0" Visibility="Collapsed" Click="ButtonsClick_Click" Style="{StaticResource RedButtonStyle}"/>
+        </StackPanel>
+    </Grid>
+</Window>

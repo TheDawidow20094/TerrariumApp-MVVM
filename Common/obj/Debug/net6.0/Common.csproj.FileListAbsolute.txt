@@ -1,0 +1,16 @@
+C:\Users\Dawid\Documents\Projects\TerrariumApp\Common\bin\Debug\net6.0\Common.deps.json
+C:\Users\Dawid\Documents\Projects\TerrariumApp\Common\bin\Debug\net6.0\Common.runtimeconfig.json
+C:\Users\Dawid\Documents\Projects\TerrariumApp\Common\bin\Debug\net6.0\Common.dll
+C:\Users\Dawid\Documents\Projects\TerrariumApp\Common\bin\Debug\net6.0\Common.pdb
+C:\Users\Dawid\Documents\Projects\TerrariumApp\Common\obj\Debug\net6.0\Common.csproj.AssemblyReference.cache
+C:\Users\Dawid\Documents\Projects\TerrariumApp\Common\obj\Debug\net6.0\Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dawid\Documents\Projects\TerrariumApp\Common\obj\Debug\net6.0\Common.AssemblyInfoInputs.cache
+C:\Users\Dawid\Documents\Projects\TerrariumApp\Common\obj\Debug\net6.0\Common.AssemblyInfo.cs
+C:\Users\Dawid\Documents\Projects\TerrariumApp\Common\obj\Debug\net6.0\Common.csproj.CoreCompileInputs.cache
+C:\Users\Dawid\Documents\Projects\TerrariumApp\Common\obj\Debug\net6.0\Common.csproj.Fody.CopyLocal.cache
+C:\Users\Dawid\Documents\Projects\TerrariumApp\Common\obj\Debug\net6.0\Common.csproj.Fody.RuntimeCopyLocal.cache
+C:\Users\Dawid\Documents\Projects\TerrariumApp\Common\obj\Debug\net6.0\Common.dll
+C:\Users\Dawid\Documents\Projects\TerrariumApp\Common\obj\Debug\net6.0\refint\Common.dll
+C:\Users\Dawid\Documents\Projects\TerrariumApp\Common\obj\Debug\net6.0\Common.pdb
+C:\Users\Dawid\Documents\Projects\TerrariumApp\Common\obj\Debug\net6.0\Common.genruntimeconfig.cache
+C:\Users\Dawid\Documents\Projects\TerrariumApp\Common\obj\Debug\net6.0\ref\Common.dll

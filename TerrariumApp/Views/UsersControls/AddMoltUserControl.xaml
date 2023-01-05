@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="TerrariumApp.Views.UsersControls.AddMoltUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TerrariumApp.Views.UsersControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="676" d:DesignWidth="1174" Style="{StaticResource UserControlStyle}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="0.1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <ComboBox x:Name="cbSpiders" Grid.Row="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" MaxHeight="50" MinWidth="400" ItemsSource="{Binding Spiders}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedSpider, Mode=TwoWay}" Style="{StaticResource ComboBoxStyle}"/>
+        <Border Style="{StaticResource ImageBorderStyle}" Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" BorderBrush="White" BorderThickness="1" Margin="5">
+            <Image x:Name="imageMolt" PreviewMouseDown="imageMolt_PreviewMouseDown" Source="pack://application:,,,/Resources/Images/addPhoto.png" Margin="10"/>
+        </Border>
+        <TextBlock Text="{Binding DateTranslation}" Style="{StaticResource InformationTextBlock}" Grid.Column="0" Grid.Row="1"/>
+        <DatePicker x:Name="dpMoltDate" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" SelectedDateChanged="dpMoltDate_SelectedDateChanged" Style="{StaticResource DatePickerStyle}"/>
+        <StackPanel Grid.ColumnSpan="2" Grid.Row="2" Orientation="Vertical">
+            <TextBlock Text="{Binding DescriptionTranslation}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="123,15,0,0" Style="{StaticResource InformationTextBlock}"/>
+            <TextBox x:Name="tboxDescription" MaxLength="398" Style="{StaticResource StandardTextBoxStyle}" Margin="123,20,0,0" HorizontalAlignment="Left" MaxWidth="450" MaxHeight="200" TextWrapping="Wrap"/>
+        </StackPanel>
+        <Button x:Name="btnAddMolt" PreviewMouseDown="btnAddMolt_PreviewMouseDown" Content="{Binding AddButtonTranslation}" Grid.Row="3" Grid.ColumnSpan="4" HorizontalAlignment="Center" Style="{StaticResource GreenButtonStyle}" Margin="10" MinWidth="250" Command="{Binding AddMoltCommand}"/>
+    </Grid>
+</UserControl>

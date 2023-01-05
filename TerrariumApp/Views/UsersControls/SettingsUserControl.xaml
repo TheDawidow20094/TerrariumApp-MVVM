@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="TerrariumApp.Views.UsersControls.SettingsUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TerrariumApp.Views.UsersControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="676" d:DesignWidth="1174" Style="{StaticResource UserControlStyle}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.7*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="tblLanguage" Grid.Column="0" Grid.Row="0" Style="{StaticResource InformationTextBlock}" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,88,0,0"/>
+        <StackPanel x:Name="spLanguage" Grid.Column="1" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Top" Margin="20,50,0,0">
+            <Button x:Name="btnPolishLanguage" Style="{StaticResource LanguageButtons}" PreviewMouseDown="LanguageButtons_PreviewMouseDown">
+                <Image Source="pack://application:,,,/Resources/Images/polandFlag.png"/>
+            </Button>
+            <Button x:Name="btnEnglishLanguage" Margin="20,0,0,0" Style="{StaticResource LanguageButtons}" PreviewMouseDown="LanguageButtons_PreviewMouseDown">
+                <Image Source="pack://application:,,,/Resources/Images/unitedKingdomFlag.png"/>
+            </Button>
+        </StackPanel>
+        <Button x:Name="btnConfirm" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource GreenButtonStyle}" Margin="10" Width="250" PreviewMouseDown="btnConfirm_PreviewMouseDown"/>
+    </Grid>
+</UserControl>

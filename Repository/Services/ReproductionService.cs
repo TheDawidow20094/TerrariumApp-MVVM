@@ -6,25 +6,23 @@ using Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
-using Connection = Repository.Controlers.Connection;
 
 namespace Repository.Services
-{
-    public class MoltServices : IMolt
+{   
+    public class ReproductionService : IReproduction
     {
         private Connection _connParam;
 
-        public MoltServices(Connection connParam)
+        public ReproductionService(Connection connParam)
         {
             _connParam = connParam;
         }
 
-        public bool AddMolt(Molt molt,int spiderId)
+        public bool AddReproduction(Reproduction reproduction)
         {
             try
             {
@@ -33,18 +31,21 @@ namespace Repository.Services
                     conn.Open();
                     using (SqliteCommand cmd = conn.CreateCommand())
                     {
-                        cmd.Parameters.Add("@SPIDER_ID", SqliteType.Integer).Value = spiderId;
-                        cmd.Parameters.Add("@MOLT_DATE", SqliteType.Text).Value = molt.MoltDate != null ? molt.MoltDate : DBNull.Value;
-                        cmd.Parameters.Add("@MOLT_DESC", SqliteType.Text).Value = molt.MoltDesc != null ? molt.MoltDesc : DBNull.Value;
-                        cmd.Parameters.Add("@IMAGE_PATH", SqliteType.Text).Value = molt.ImagePath != null ? molt.ImagePath : DBNull.Value;
-                        cmd.CommandText = "INSERT INTO Molts (Spider_Id, Molt_Date, Molt_Desc, Image_Path)" +
-                            " VALUES ( @SPIDER_ID, @MOLT_DATE, @MOLT_DESC, @IMAGE_PATH)";
+                        cmd.Parameters.Add("@SPIDER_FEMALE_ID", SqliteType.Integer).Value = reproduction.SpiderFemaleId;
+                        cmd.Parameters.Add("@COPULATION_DATE", SqliteType.Text).Value = reproduction.CopulationDate != null ? reproduction.CopulationDate : DBNull.Value;
+                        cmd.Parameters.Add("@IS_SUCCESSFUL", SqliteType.Integer).Value = reproduction.IsSuccessful != null ? reproduction.IsSuccessful : DBNull.Value;
+                        cmd.Parameters.Add("@IS_SPIDER_MALE_EATEN", SqliteType.Integer).Value = reproduction.IsSpiderMaleEaten != null ? reproduction.IsSpiderMaleEaten : DBNull.Value;
+                        cmd.Parameters.Add("@IS_COCCON", SqliteType.Integer).Value = reproduction.IsCoccon != null ? reproduction.IsCoccon : DBNull.Value;
+                        cmd.Parameters.Add("@NOTE", SqliteType.Text).Value = reproduction.Note != null ? reproduction.Note : DBNull.Value;
+                        cmd.CommandText = "INSERT INTO Reproductions " +
+                            " (Spider_Female_Id, Copulation_Date, Is_Successful, Is_SPider_Male_Eaten, Is_Coccon, Note)" +
+                            " VALUES (@SPIDER_FEMALE_ID, @COPULATION_DATE, @IS_SUCCESSFUL, @IS_SPIDER_MALE_EATEN, @IS_COCCON, @NOTE)";
                         if (cmd.ExecuteNonQuery() != 0)
                         {
                             return true;
                         }
                         return false;
-                    }
+                    }                    
                 }
             }
             catch (Exception ex)
@@ -54,7 +55,7 @@ namespace Repository.Services
             }
         }
 
-        public bool DeleteAllSpiderMolts(int spiderId)
+        public bool DeleteAllSpiderReproductions(int spiderId)
         {
             try
             {
@@ -64,7 +65,7 @@ namespace Repository.Services
                     using (SqliteCommand cmd = conn.CreateCommand())
                     {
                         cmd.Parameters.Add("@SPIDER_ID", SqliteType.Integer).Value = spiderId;
-                        cmd.CommandText = "DELETE FROM Molts WHERE Spider_Id = @SPIDER_ID";
+                        cmd.CommandText = "DELETE FROM Reproductions WHERE Spider_Female_Id = @SPIDER_ID";
                         cmd.ExecuteNonQuery();
                         return true;
                     }
@@ -77,7 +78,7 @@ namespace Repository.Services
             }
         }
 
-        public bool DeleteMolt(int moltId, int spiderId)
+        public bool DeleteReproduction(int spiderId, string reproductionDate)
         {
             try
             {
@@ -86,10 +87,11 @@ namespace Repository.Services
                     conn.Open();
                     using (SqliteCommand cmd = conn.CreateCommand())
                     {
-                        cmd.Parameters.Add("@MOLT_ID", SqliteType.Integer).Value = moltId;
+                        DateTime formatedDate;
+                        formatedDate = DateTime.ParseExact(reproductionDate, "dd.MM.yyyy", CultureInfo.InvariantCulture);
                         cmd.Parameters.Add("@SPIDER_ID", SqliteType.Integer).Value = spiderId;
-                        cmd.CommandText = "DELETE FROM Molts" +
-                            " WHERE Molt_Id = @MOLT_ID AND Spider_Id = @SPIDER_ID";
+                        cmd.Parameters.Add("@COPULATION_DATE", SqliteType.Text).Value = formatedDate.ToString("yyyy-MM-dd");
+                        cmd.CommandText = "DELETE FROM Reproductions WHERE Spider_Female_Id = @SPIDER_ID AND Copulation_Date = @COPULATION_DATE";
                         if (cmd.ExecuteNonQuery() != 0)
                         {
                             return true;
@@ -105,9 +107,9 @@ namespace Repository.Services
             }
         }
 
-        public ObservableCollection<Molt> GetAllMolts(int spiderId)
+        public int GetSpiderReproductionCount(int spiderId)
         {
-            ObservableCollection<Molt> molts = new();
+            int reproductionCount = -1;
             try
             {
                 using (SqliteConnection conn = new(_connParam.GetLocalConnectionString()))
@@ -116,51 +118,13 @@ namespace Repository.Services
                     using (SqliteCommand cmd = conn.CreateCommand())
                     {
                         cmd.Parameters.Add("@SPIDER_ID", SqliteType.Integer).Value = spiderId;
-                        cmd.CommandText = " SELECT * FROM Molts" +
-                            " WHERE Spider_Id = @SPIDER_ID";
-                        SqliteDataReader reader = cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            Molt molt = new();
-                            molt.SpiderId = int.Parse(reader["Spider_Id"].ToString());
-                            molt.MoltId = int.Parse(reader["Molt_Id"].ToString());
-                            if (!string.IsNullOrEmpty(reader["Molt_Date"].ToString()))
-                            {
-                                molt.MoltDate = DateOnly.Parse(reader["Molt_Date"].ToString());
-                            }
-                            molt.MoltDesc = reader["Molt_Desc"].ToString();
-                            molt.ImagePath = reader["Image_Path"].ToString();
-                            molts.Add(molt);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                RepositoryGlobals.Log.WriteLog(this.GetType().Name, ex.Message, LogType.Error, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
-                return molts;
-            }
-            return molts;
-        }
-
-        public int GetSpiderMoltsCount(int spiderId)
-        {
-            int count = 0;
-            try
-            {
-                using (SqliteConnection conn = new(_connParam.GetLocalConnectionString()))
-                {
-                    conn.Open();
-                    using (SqliteCommand cmd = conn.CreateCommand())
-                    {
-                        cmd.Parameters.Add("@SPIDER_ID", SqliteType.Integer).Value = spiderId;
-                        cmd.CommandText = "SELECT count(*) AS COUNT " +
-                            " FROM Molts" +
-                            " WHERE Spider_Id = @SPIDER_ID";
+                        cmd.CommandText = "SELECT count(Reproduction_Id) AS Reproduction_Count " +
+                            "FROM Reproductions " +
+                            "GROUP BY Reproduction_Id";
                         SqliteDataReader reader = cmd.ExecuteReader();
                         if (reader.Read())
                         {
-                            count = int.Parse(reader["COUNT"].ToString());
+                            reproductionCount = int.Parse(reader["Reproduction_Count"].ToString());
                         }
                     }
                 }
@@ -168,9 +132,52 @@ namespace Repository.Services
             catch (Exception ex)
             {
                 RepositoryGlobals.Log.WriteLog(this.GetType().Name, ex.Message, LogType.Error, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
-                return count;
+                return -1;
             }
-            return count;
+            return reproductionCount;
         }
+
+        public ObservableCollection<Reproduction> GetSpiderReproductions(int spiderId)
+        {
+            ObservableCollection<Reproduction> reproductionsList = new ObservableCollection<Reproduction>();
+            try
+            {
+                using (SqliteConnection conn = new(_connParam.GetLocalConnectionString()))
+                {
+                    conn.Open();
+                    using (SqliteCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.Parameters.Add("@SPIDER_FEMALE_ID", SqliteType.Integer).Value = spiderId;
+                        cmd.CommandText = "SELECT * FROM Reproductions" +
+                            " WHERE Spider_Female_Id = @SPIDER_FEMALE_ID";
+                        SqliteDataReader reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            Reproduction reproduction = new();
+                            if (!string.IsNullOrEmpty(reader["Copulation_Date"].ToString()))
+                            {
+                                reproduction.CopulationDate = DateOnly.ParseExact(reader["Copulation_Date"].ToString(), "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+                            }
+                            reproduction.IsSuccessful = Convert.ToBoolean((reader["Is_Successful"]));
+                            reproduction.IsSpiderMaleEaten = Convert.ToBoolean(reader["Is_Spider_Male_Eaten"]);
+                            reproduction.IsCoccon = Convert.ToBoolean(reader["Is_Coccon"]);
+                            reproduction.Note = reader["Note"].ToString();
+                            reproductionsList.Add(reproduction);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                RepositoryGlobals.Log.WriteLog(this.GetType().Name, ex.Message, LogType.Error, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
+                return reproductionsList;
+            }
+            return reproductionsList;
+        }
+
+        //public bool UpdateReproduction(Reproduction reproduction)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

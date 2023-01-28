@@ -11,7 +11,13 @@
             <RowDefinition Height="0.1*"/>
             <RowDefinition Height="0.9*"/>
         </Grid.RowDefinitions>
-        <ComboBox x:Name="cbSpiders" Grid.Row="0" HorizontalAlignment="Center" Margin="4" MinWidth="300" ItemsSource="{Binding SpidersList}" SelectedItem="{Binding SelectedSpider, Mode=TwoWay}" DisplayMemberPath="Name" SelectionChanged= "ComboBox_SelectionChanged" Style="{StaticResource ComboBoxStyle}"/>
+        <Grid x:Name="grHeader" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.8*"/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+            <ComboBox x:Name="cbSpiders" Grid.Row="0" HorizontalAlignment="Right" Margin="4" MinWidth="300" ItemsSource="{Binding SpidersList}" SelectedItem="{Binding SelectedSpider, Mode=TwoWay}" DisplayMemberPath="Name" SelectionChanged= "ComboBox_SelectionChanged" Style="{StaticResource ComboBoxStyle}"/>
+        </Grid>
         <DataGrid x:Name="dgMolts" Grid.Row="1" Margin="5" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False" CanUserResizeColumns="False" FontSize="15" ItemsSource="{Binding MoltsList}" PreviewKeyDown="dgMolts_PreviewKeyDown" SelectionChanged="dgMolts_SelectionChanged">
             <DataGrid.ContextMenu>
                 <ContextMenu>

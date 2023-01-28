@@ -23,10 +23,19 @@
             <RowDefinition Height="0.13*"/>
             <RowDefinition Height="0.13*"/>
         </Grid.RowDefinitions>
+        <Grid x:Name="grAddManySpiders" Grid.Row="0" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.26*"/>
+                <ColumnDefinition Width="0.15*"/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="{Binding AddManyTranslation}" Style="{StaticResource InformationTextBlock}" Grid.Column="0" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+            <ToggleButton x:Name="tbAddManyMode" Grid.Column="1" Style="{StaticResource ToggleSwitch}" HorizontalAlignment="Left" IsChecked="False" Margin="5,0,0,0"/>
+            <TextBlock Text="{Binding NameTranslation}" Grid.Column="2" Style="{StaticResource InformationTextBlock}" HorizontalAlignment="Left"/>
+        </Grid>
         <Border x:Name="borderSpiderImage" Grid.Column="2" Grid.RowSpan="4" PreviewMouseDown="borderSpiderImage_PreviewMouseDown" Style="{StaticResource ImageBorderStyle}" BorderBrush="White" BorderThickness="1" Margin="5">
             <Image x:Name="imageSpiderImage" Source="pack://application:,,,/Resources/Images/addPhoto.png" Margin="10"/>
         </Border>
-        <TextBlock Text="{Binding NameTranslation}" Grid.Column="0" Grid.Row="0" Style="{StaticResource InformationTextBlock}"/>
         <TextBlock Text="{Binding TypeTranslation}" Grid.Column="0" Grid.Row="1" Style="{StaticResource InformationTextBlock}"/>
         <TextBlock Text="{Binding SexTranslation}" Grid.Column="0" Grid.Row="2" Style="{StaticResource InformationTextBlock}"/>
         <TextBlock Text="{Binding SpeciesTranslation}" Grid.Column="0" Grid.Row="3" Style="{StaticResource InformationTextBlock}"/>

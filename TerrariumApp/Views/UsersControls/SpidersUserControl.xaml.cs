@@ -46,8 +46,7 @@ namespace TerrariumApp.Views.UsersControls
                 if (dgSpiders.SelectedItem != null && dgSpiders.SelectedItem.GetType() == typeof(Spider))
                 {
                     Spider selectedSpider = dgSpiders.SelectedItem as Spider;
-                    DeleteSpider(selectedSpider);
-                    
+                    DeleteSpider(selectedSpider);                    
                 }                                
             }
             else if(e.Key == Key.Enter)

@@ -64,6 +64,7 @@ namespace Repository.Services
         {
             try
             {
+                DeletaAllUserSpiders(userId);
                 using (SqliteConnection conn = new(_connParam.GetLocalConnectionString()))
                 {
                     conn.Open();
@@ -86,6 +87,12 @@ namespace Repository.Services
                 RepositoryGlobals.Log.WriteLog(this.GetType().Name, ex.Message, LogType.Error, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
                 return false;
             }
+        }
+
+        private void DeletaAllUserSpiders(int userId)
+        {
+            ISpider iSpider = new SpiderServices(_connParam);
+            iSpider.DeleteAllUserSpiders(userId);
         }
 
         public User GetLocalUserData(int userId)

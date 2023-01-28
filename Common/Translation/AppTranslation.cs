@@ -18,5 +18,6 @@ namespace Common.Translation
         public HomePageTranslation HomePageTranslation { get; set; }
         public SettingsTranslation SettingsTranslation { get; set; }
         public MoltTranslation MoltTranslation { get; set; }
+        public ReproductionTranslation ReproductionTranslation { get; set; }
     }
 }

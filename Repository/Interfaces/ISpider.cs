@@ -16,5 +16,9 @@ namespace Repository.Interfaces
         public bool AddSpider(Spider spiderToAdd, int userId);
         public bool UpdateSpider(Spider spiderToUpdate, int userID);
         public int GetUserSpidersCount(int userId);
+        /// <summary>
+        /// Return false when exeption
+        /// </summary>
+        public bool DeleteAllUserSpiders(int userId);
     }
 }

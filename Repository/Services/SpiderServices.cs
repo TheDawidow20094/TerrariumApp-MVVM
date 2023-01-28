@@ -59,10 +59,30 @@ namespace Repository.Services
             }
         }
 
+        public bool DeleteAllUserSpiders(int userId)
+        {
+            try
+            {
+                ObservableCollection<Spider> userSpiders = GetUserSpiders(userId);
+                userSpiders.ToList().ForEach(s =>
+                {
+                    DeleteSpider(s.SpiderId, userId); //TODO : must optymalize (using one sql, DELETE CASCADE)
+                });
+            }
+            catch (Exception ex)
+            {
+                RepositoryGlobals.Log.WriteLog(this.GetType().Name, ex.Message, Common.LogType.CriticalError, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
+                return false;
+            }
+            return true;
+        }       
+
         public bool DeleteSpider(int spiderId, int userId)
         {
             try
             {
+                //We must delete Molts and Reproductions before deleting spider!
+                DeleteMoltsAndReproductions(spiderId);
                 using (SqliteConnection conn = new(_connParam.GetLocalConnectionString()))
                 {
                     conn.Open();
@@ -210,6 +230,15 @@ namespace Repository.Services
                 RepositoryGlobals.Log.WriteLog(this.GetType().Name, ex.Message, Common.LogType.Error, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
                 return false;
             }
+        }
+
+        
+        private void DeleteMoltsAndReproductions(int spiderId)
+        {
+            IMolt iMolt = new MoltServices(_connParam);
+            IReproduction iReproduction = new ReproductionService(_connParam);
+            iMolt.DeleteAllSpiderMolts(spiderId);
+            iReproduction.DeleteAllSpiderReproductions(spiderId);
         }
     }
 }

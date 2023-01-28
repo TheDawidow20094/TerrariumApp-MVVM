@@ -16,6 +16,7 @@
                 <StackPanel x:Name="spAddInnerMenu" Visibility="Collapsed">
                     <ToggleButton x:Name="tbtnAddSpider" Content="{Binding AddSpiderLanguage}" Style="{StaticResource InnerMenuToggleButtonStyle}" Click="MenuButtons_Click"/>
                     <ToggleButton x:Name="tbtbAddMolt" Content="{Binding AddMoltLanguage}" Style="{StaticResource InnerMenuToggleButtonStyle}" Click="MenuButtons_Click"/>
+                    <ToggleButton x:Name="tbtbAddReproduction" Content="{Binding AddCopulationLanguage}" Style="{StaticResource InnerMenuToggleButtonStyle}" Click="MenuButtons_Click"/>
                 </StackPanel>
                 <ToggleButton x:Name="tbtnHomePage" Grid.Column="1" Grid.Row="1" Background="#FF6b6368" Style="{StaticResource MenuToggleButtonsStyle}" Content="{Binding MainMenuButtonLanguage}" Click="MenuButtons_Click">
                 </ToggleButton>
@@ -23,6 +24,7 @@
                 </ToggleButton>
                 <ToggleButton x:Name="tbtnMolts" Grid.Column="1" Grid.Row="3" Background="#FF6b6368" Style="{StaticResource MenuToggleButtonsStyle}" Content="{Binding MoltsButtonLanguage}" Click="MenuButtons_Click">
                 </ToggleButton>
+                <ToggleButton x:Name="tbtnReproductions" Grid.Column="1" Grid.Row="3" Background="#FF6b6368" Style="{StaticResource MenuToggleButtonsStyle}" Content="{Binding CopulationsButtonLanguage}" Click="MenuButtons_Click"/>
                 <ToggleButton x:Name="tbtnStats" Grid.Column="1" Grid.Row="4" Background="#FF6b6368" Style="{StaticResource MenuToggleButtonsStyle}" Content="{Binding StatsButtonLanguage}" Click="MenuButtons_Click">
                 </ToggleButton>
             </StackPanel>

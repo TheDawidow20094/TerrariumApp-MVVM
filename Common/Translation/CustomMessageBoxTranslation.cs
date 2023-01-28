@@ -10,6 +10,7 @@ namespace Common.Translation
     {
         public string WarningCaption { get; set; }
         public string ErrorCaption { get; set; }
+        public string NoteCaption { get; set; }
         public string MoltAddingError { get; set; }
         public string MoltDeletingError { get; set; }
         public string NoSelectedMoltWarning { get; set; }
@@ -27,5 +28,8 @@ namespace Common.Translation
         public string PhotoNoFound { get; set; }
         public string DeletingAllSpidersError { get; set; }
         public string ConfirmDeletingAllUSerSpiders { get; set; }
+        public string ReproductionAddingError { get; set; }
+        public string ConfirmSelectedReproductionToDelete { get; set; }
+        public string ReproductionRemoveError { get; set; }
     }
 }

@@ -18,11 +18,11 @@ using Repository.Controlers;
 namespace TerrariumApp
 {
     public static class Globals
-    {
+    {        
         public static Log Log = new();
         public static Connection connParam = new();
         public static ApplicationConfig ApplicationConfig = GetApplicationConfig();  
-        public static AppTranslation Translation = GetApplicationTranslation(ApplicationConfig.AppLanguage);        
+        public static AppTranslation Translation = GetApplicationTranslation(ApplicationConfig.AppLanguage);
         private static IUser _IUser = new UserService(connParam);
         public static User LocalUserData = _IUser.GetLocalUserData(ApplicationConfig.LastLoggedUserId);
         public static MainMenuPages LastOpenedPage;

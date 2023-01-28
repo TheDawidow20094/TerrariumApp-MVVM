@@ -26,6 +26,6 @@
                 <DataGridTextColumn x:Name="deathDateHeader" Width="*" Binding="{Binding DeathDate}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btnDeleteSpiderHelper" Visibility="Collapsed" Command="{Binding DeleteSelectedSpiderCommand}" CommandParameter="{Binding SelectedSpider}"/>
+        <Button x:Name="btnDeleteSpiderHelper" Visibility="Collapsed" Command="{Binding DeleteReproductionCommand}" CommandParameter="{Binding SelectedFemaleSpider}"/>
     </Grid>
 </UserControl>

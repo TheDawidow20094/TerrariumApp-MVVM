@@ -44,13 +44,17 @@ namespace TerrariumApp
         AddSpider = 1,
         [Description("AddMolt")]
         AddMolt = 2,
+        [Description("AddReproduction")]
+        AddReproduction = 3,
         [Description("HomePage")]
-        HomePage = 3,
+        HomePage = 4,
         [Description("Spiders")]
-        Spiders = 4,
+        Spiders = 5,
         [Description("Molts")]
-        Molts = 5,
+        Molts = 6,
+        [Description("Reproductions")]
+        Reproductions = 7,
         [Description("Stats")]
-        Stats = 6,
+        Stats = 8,
     }
 }

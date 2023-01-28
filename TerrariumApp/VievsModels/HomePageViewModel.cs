@@ -85,7 +85,7 @@ namespace TerrariumApp.VievsModels
                 QuickDataViewVisibility = Visibility.Visible;
                 Sex = SelectedSpider.Sex;
                 LastFeedingDate = string.IsNullOrEmpty(SelectedSpider.LastFeedingDate.ToString()) ? "----" : SelectedSpider.LastFeedingDate.ToString();
-                Molts = _iMolt.GetSpiderMoltsCount(SelectedSpider.SpiderId, Globals.LocalUserData.UserId).ToString();
+                Molts = _iMolt.GetSpiderMoltsCount(SelectedSpider.SpiderId).ToString();
                 IsActiveText = SelectedSpider.IsActive ? Globals.Translation.HomePageTranslation.Yes : Globals.Translation.HomePageTranslation.No;
                 SpidersCount = _iSpider.GetUserSpidersCount(Globals.LocalUserData.UserId).ToString();
             }

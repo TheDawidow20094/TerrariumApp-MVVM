@@ -28,6 +28,7 @@ namespace TerrariumApp.VievsModels
         public string AddSpiderButtonTranslation { get; set; }
         public string ReturnButtonTranslation { get; set; }
         public string SexTranslation { get; set; }
+        public string AddManyTranslation { get; set; }
         #endregion
         private ISpecies _ISpecies = new SpeciesServices(Globals.connParam);
         private ISpider _ISpider = new SpiderServices(Globals.connParam);
@@ -56,6 +57,7 @@ namespace TerrariumApp.VievsModels
             AddSpiderButtonTranslation = translation.AddSpiderButton;
             ReturnButtonTranslation = translation.ReturnButton;
             SexTranslation = translation.Sex + " :";
+            AddManyTranslation = translation.AddManySpiders;
         }
 
         private void AddSpecies()

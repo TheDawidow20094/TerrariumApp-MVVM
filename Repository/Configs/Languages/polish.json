@@ -5,6 +5,7 @@
     //Captions :
     "WarningCaption": "UWAGA!",
     "ErrorCaption": "BłĄD!",
+    "NoteCaption" : "NOTATKA",
     //Text:
     "MoltAddingError": "Nie udało się dodać wylinki!",
     "MoltDeletingError": "Nie udało się usunąć wylinki!",
@@ -20,26 +21,34 @@
     "ConfirmSelectedUserToDelete": "Czy na pewno chcesz usunąć użytkownika ",
     "PhotoNoFound": "Nie znaleziono zdjęcia!",
     "DeletingAllSpidersError": "Nie udało się usunąć wszystkich pająków użytkownika",
-    "ConfirmDeletingAllUSerSpiders" : "Musisz najpierw usunąć wszystkie pająki! \nCzy na pewno chcesz to zrobić?",
+    "ConfirmDeletingAllUSerSpiders": "Musisz najpierw usunąć wszystkie pająki! \nCzy na pewno chcesz to zrobić?",
+    "ReproductionAddingError": "Nie udało się dodać kopulacji!",
+    "ConfirmSelectedReproductionToDelete": "Czy na pewno chcesz usunąć kopulacje z dnia ",
+    "ReproductionRemoveError": "Nie udało się usunąć kopulacji!",
     //Buttons:
     "YesButton": "Tak",
     "NoButton": "Nie"
   },
   "ContextMenuTranslation": {
     "AddSpider": "Dodaj pająka",
-    "DeleteSpider" : "Usuń pająka",
+    "DeleteSpider": "Usuń pająka",
     "AddMolt": "Dodaj wylinkę",
     "DeleteMolt": "Usuń wylinkę",
-    "ShowImage" : "Pokaż zdjęcie"
+    "ShowImage": "Pokaż zdjęcie",
+    "AddCopulation": "Dodaj kopulacje",
+    "DeleteCopulation": "Usuń kopulacje",
+    "ShowNote": "Pokaż notatke"
   },
   "MainMenuTranslation": {
     "AddButton": "Dodaj",
     "AddSpider": "Pająka",
     "AddMolt": "Wylinkę",
+    "AddCopulation": "Kopulacje",
     "MainMenuButton": "Menu główne",
     "SpidersButton": "Pająki",
     "MoltsButton": "Wylinki",
-    "StatsButton": "Statysktki",
+    "StatsButton": "Statystyki",
+    "CopulationsButton" :"Kopulacje",
     "UserSettingsFooter": "Ustawienia użytkownika",
     "SettingsFooter": "Ustawienia"
   },
@@ -61,7 +70,8 @@
     "Sex": "Płeć",
     "AddSpiderButton": "Dodaj pająka",
     "ReturnButton": "Powrót",
-    "SaveChangesAndExitButton": "Zapisz zmiany oraz wyjdź"
+    "SaveChangesAndExitButton": "Zapisz zmiany oraz wyjdź",
+    "AddManySpiders" : "Dodaj wiele:"
   },
   "MoltTranslation": {
     "Date": "Data :",
@@ -69,6 +79,15 @@
     "AddButton": "Dodaj",
     "MoltDate": "Data wylinki",
     "HasImage": "Zdjęcie?"
+  },
+  "ReproductionTranslation": {
+    "FemaleSpiderOnlyText": "Tylko pająki płci żeńskiej!",
+    "CopulationDate": "Data kopulacji",
+    "IsSuccessfull": "Czy kopulacja udana",
+    "IsSPiderMaleEaten": "Czy samica zjadła samca",
+    "IsCoccon": "Czy jest kokon",
+    "Note": "Notatki",
+    "AddCopulationButton" : "Dodaj kopulacje"
   },
   "HomePageTranslation": {
     "Welcome": "Witaj",

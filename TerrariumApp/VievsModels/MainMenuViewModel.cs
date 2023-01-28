@@ -18,6 +18,8 @@ namespace TerrariumApp.VievsModels
         public string SpidersButtonLanguage { get; set; }
         public string MoltsButtonLanguage { get; set; }
         public string StatsButtonLanguage { get; set; }
+        public string AddCopulationLanguage { get; set; }
+        public string CopulationsButtonLanguage { get; set; }
         #endregion
 
         public MainMenuViewModel()
@@ -35,6 +37,8 @@ namespace TerrariumApp.VievsModels
             StatsButtonLanguage = translation.StatsButton;
             AddSpiderLanguage = translation.AddSpider;
             AddMoltLanguage = translation.AddMolt;
+            AddCopulationLanguage = translation.AddCopulation;
+            CopulationsButtonLanguage = translation.CopulationsButton;
         }
     }
 }

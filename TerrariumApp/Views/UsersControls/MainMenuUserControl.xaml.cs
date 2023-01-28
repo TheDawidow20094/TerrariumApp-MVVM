@@ -66,6 +66,13 @@ namespace TerrariumApp
                     mainWindow.gridMainContent.Children.Add(addMoltUserControl);
                     Globals.LastOpenedPage = MainMenuPages.AddMolt;
                     break;
+                case "tbtbAddReproduction":
+                    tbtnAdd.IsChecked = true;
+                    mainWindow.gridMainContent.Children.Clear();
+                    AddReproductionUserControl addReproductionUserControl = new();
+                    mainWindow.gridMainContent.Children.Add(addReproductionUserControl);
+                    Globals.LastOpenedPage = MainMenuPages.AddReproduction;
+                    break;
                 case "tbtnHomePage":
                     spAddInnerMenu.Visibility = Visibility.Collapsed;
                     mainWindow.gridMainContent.Children.Clear();                    
@@ -86,6 +93,13 @@ namespace TerrariumApp
                     MoltsUserControl moltsUserControl = new();
                     mainWindow.gridMainContent.Children.Add(moltsUserControl);
                     Globals.LastOpenedPage = MainMenuPages.Molts;
+                    break;
+                case "tbtnReproductions":
+                    spAddInnerMenu.Visibility = Visibility.Collapsed;
+                    mainWindow.gridMainContent.Children.Clear();
+                    ReproductionsUserControl reproductionsUserControl = new();
+                    mainWindow.gridMainContent.Children.Add(reproductionsUserControl);
+                    Globals.LastOpenedPage = MainMenuPages.Reproductions;
                     break;
                 case "tbtnStats":
                     spAddInnerMenu.Visibility = Visibility.Collapsed;
@@ -157,7 +171,11 @@ namespace TerrariumApp
                     spAddInnerMenu.Visibility = Visibility.Visible;
                     tbtbAddMolt.IsChecked = true;
                     MenuButtons_Click(tbtbAddMolt, null);
-                    break;                
+                    break;
+                case MainMenuPages.AddReproduction:
+                    tbtbAddReproduction.IsChecked = true;
+                    MenuButtons_Click(tbtbAddReproduction, null);
+                    break;
                 case MainMenuPages.HomePage:
                     tbtnHomePage.IsChecked = true;
                     MenuButtons_Click(tbtnHomePage, null);
@@ -169,6 +187,10 @@ namespace TerrariumApp
                 case MainMenuPages.Molts:
                     tbtnMolts.IsChecked = true;
                     MenuButtons_Click(tbtnMolts, null);
+                    break;
+                case MainMenuPages.Reproductions:
+                    tbtnReproductions.IsChecked = true;
+                    MenuButtons_Click(tbtnReproductions, null);
                     break;
                 case MainMenuPages.Stats:
                     tbtnStats.IsChecked = true;

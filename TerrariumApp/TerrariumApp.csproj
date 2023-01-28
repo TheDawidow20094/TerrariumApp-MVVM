@@ -9,9 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="bin\**" />
     <Compile Remove="Configs\**" />
+    <EmbeddedResource Remove="bin\**" />
     <EmbeddedResource Remove="Configs\**" />
+    <None Remove="bin\**" />
     <None Remove="Configs\**" />
+    <Page Remove="bin\**" />
     <Page Remove="Configs\**" />
   </ItemGroup>
 
@@ -62,7 +66,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="bin\Debug\net6.0-windows\Resources\Images\" />
     <Folder Include="Models\" />
   </ItemGroup>
 

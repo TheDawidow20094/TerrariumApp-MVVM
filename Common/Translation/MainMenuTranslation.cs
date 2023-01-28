@@ -17,6 +17,8 @@ namespace Common.Translation
         public string StatsButton { get; set; }
         public string UserSettingsFooter { get; set; }
         public string SettingsFooter { get; set; }
+        public string AddCopulation { get; set; }
+        public string CopulationsButton { get; set; }
 
     }
 }

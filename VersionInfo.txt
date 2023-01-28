@@ -1,0 +1,15 @@
+Version Alpha 1.0
+-First relase
+Include:
+-Users
+-Spiders
+-Molts
+-Basic settings
+-Polish and english language
+-Unit tests
+
+Version Alpha 1.1
+-Add Copulations
+-Disable expand empty combobox
+-Add many spiders mode
+-Bugs fixing

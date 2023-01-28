@@ -87,8 +87,15 @@ namespace TerrariumApp.Views.UsersControls
                 }
                 else
                 {
-                    ClearValues();
-                    _spiderWasAddedSuccessfull = true;
+                    if ((bool)tbAddManyMode.IsChecked)
+                    {
+                        ClearValues();
+                        _spiderWasAddedSuccessfull = true;
+                    }
+                    else
+                    {
+                        VisualElementsHelper.GetMainMenuUserControl().OpenPage(MainMenuPages.Spiders);
+                    }                    
                 }               
             }            
         }

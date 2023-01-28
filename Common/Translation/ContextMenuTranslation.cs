@@ -13,5 +13,9 @@ namespace Common.Translation
         public string AddMolt { get; set; }
         public string DeleteMolt { get; set; }
         public string ShowImage { get; set; }
+        public string AddCopulation { get; set; }
+        public string DeleteCopulation { get; set; }
+        public string ShowNote { get; set; }
+
     }
 }

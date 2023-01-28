@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="TerrariumApp.Views.UsersControls.ReproductionsUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TerrariumApp.Views.UsersControls"
+             mc:Ignorable="d" 
+             x:Name="gcReproductions"
+             d:DesignHeight="676" d:DesignWidth="1174" Style="{StaticResource UserControlStyle}" PreviewKeyDown="gcReproductions_PreviewKeyDown">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.9*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="grHeader" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.8*"/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+            <ComboBox x:Name="cbFemaleSpiders" Grid.Column="0" HorizontalAlignment="Right" Margin="4" MinWidth="300" ItemsSource="{Binding FemaleSpidersList}" SelectedItem="{Binding SelectedFemaleSpider, Mode=TwoWay}" DisplayMemberPath="Name" Style="{StaticResource ComboBoxStyle}" SelectionChanged="cbFemaleSpiders_SelectionChanged"/>
+            <TextBlock x:Name="tblFemaleSpiderOnly" Grid.Column="1" Foreground="#ff4e3b" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource InformationTextBlock}"/>
+        </Grid>
+        <DataGrid x:Name="dgReproductions" Grid.Row="1" Margin="5" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False" CanUserResizeColumns="False" FontSize="15" ItemsSource="{Binding ReproductionsList}">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="miAddReproduction" Header="{Binding MenuItemAddCopulationTranslation}" Click="MenuItem_Click"/>
+                    <MenuItem x:Name="miDeleteReproduction" Header="{Binding MenuItemDeleteCopulationTranslation}" Click="MenuItem_Click"/>
+                    <MenuItem x:Name="miShowNote" Header="{Binding MenuItemShowNoteTranslation}" Click="MenuItem_Click"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="copulationDateHeader" Width="1.*" Binding="{Binding CopulationDate}"/>
+                <DataGridCheckBoxColumn x:Name="isSuccessfulHeader" Width="1*" Binding="{Binding IsSuccessful}"/>
+                <DataGridCheckBoxColumn x:Name="isSpiderMaleEatenHeader" Width="1.1*" Binding="{Binding IsSpiderMaleEaten}"/>
+                <DataGridCheckBoxColumn x:Name="isCocconHeader" Width="1*" Binding="{Binding IsCoccon}"/>
+                <DataGridTextColumn x:Name="noteHeader" Width="2.5*" Binding="{Binding Note}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btSelectionChangedHelper" Visibility="Collapsed" Command="{Binding FemaleSpiderSelectionChange}"/>
+        <Button x:Name="btnDeleteReproductionHelper" Visibility="Collapsed" Command="{Binding DeleteReproductionCommand}"/>
+    </Grid>
+</UserControl>

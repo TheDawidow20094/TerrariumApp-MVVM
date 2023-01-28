@@ -20,6 +20,7 @@ namespace Common.Translation
         public string Sex { get; set; }
         public string ReturnButton { get; set; }
         public string SaveChangesAndExitButton { get; set; }
+        public string AddManySpiders { get; set; }
 
     }
 }

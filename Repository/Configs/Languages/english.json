@@ -5,6 +5,7 @@
     //Captions :
     "WarningCaption": "Warning!",
     "ErrorCaption": "Error!",
+    "NoteCaption": "Note",
     //Text:
     "MoltAddingError": "Failed to add molt!",
     "MoltDeletingError": "Failed to remove molt!",
@@ -21,6 +22,9 @@
     "PhotoNoFound": "Photo no found!",
     "DeletingAllSpidersError": "Failed to remove all user spiders ",
     "ConfirmDeletingAllUSerSpiders": "You must remove all the spiders first! \nAre you sure you want to do this?",
+    "ReproductionAddingError": "Failed to add copulation!",
+    "ConfirmSelectedReproductionToDelete": "Are you sure you want to remove the copulation of the day ",
+    "ReproductionRemoveError": "Failed to remove copulation!",
     //Buttons:
     "YesButton": "Yes",
     "NoButton": "No"
@@ -30,16 +34,21 @@
     "DeleteSpider": "Delete spider",
     "AddMolt": "Add molt",
     "DeleteMolt": "Delete molt",
-    "ShowImage": "Show image"
+    "ShowImage": "Show image",
+    "AddCopulation": "Add copulation",
+    "DeleteCopulation": "Delete copulation",
+    "ShowNote": "Show note"
   },
   "MainMenuTranslation": {
     "AddButton": "Add",
     "AddSpider": "Spider",
     "AddMolt": "Molt",
+    "AddCopulation": "Copulation",
     "MainMenuButton": "Home",
     "SpidersButton": "Spiders",
     "MoltsButton": "Molts",
     "StatsButton": "Stats",
+    "CopulationsButton": "Copulations",
     "UserSettingsFooter": "User settings",
     "SettingsFooter": "Settings"
   },
@@ -61,7 +70,8 @@
     "Sex": "Sex",
     "AddSpiderButton": "Add spider",
     "ReturnButton": "Return",
-    "SaveChangesAndExitButton": "Save changes and exit"
+    "SaveChangesAndExitButton": "Save changes and exit",
+    "AddManySpiders": "Add many:"
   },
   "MoltTranslation": {
     "Date": "Date :",
@@ -69,6 +79,15 @@
     "AddButton": "Add",
     "MoltDate": "Molt date",
     "HasImage": "Has image"
+  },
+  "ReproductionTranslation": {
+    "FemaleSpiderOnlyText": "Female spiders only!",
+    "CopulationDate": "Copulation date",
+    "IsSuccessfull": "Was successful",
+    "IsSPiderMaleEaten": "Has the male been eaten",
+    "IsCoccon": "Coccon",
+    "Note": "Note",
+    "AddCopulationButton": "Add copulation"
   },
   "HomePageTranslation": {
     "Welcome": "Welcome",

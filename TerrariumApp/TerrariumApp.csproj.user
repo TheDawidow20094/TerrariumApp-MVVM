@@ -10,6 +10,9 @@
     <Compile Update="Views\UsersControls\AddMoltUserControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\UsersControls\AddReproductionUserControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\UsersControls\AddSpiderUserControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -23,6 +26,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\UsersControls\MoltsUserControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\UsersControls\ReproductionsUserControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\UsersControls\SettingsUserControl.xaml.cs">
@@ -81,6 +87,9 @@
     <Page Update="Views\UsersControls\AddMoltUserControl.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\UsersControls\AddReproductionUserControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\UsersControls\AddSpiderUserControl.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -94,6 +103,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\UsersControls\MoltsUserControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\UsersControls\ReproductionsUserControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\UsersControls\SettingsUserControl.xaml">

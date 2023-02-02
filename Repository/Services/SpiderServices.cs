@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -54,7 +55,7 @@ namespace Repository.Services
             }
             catch (Exception ex)
             {
-                RepositoryGlobals.Log.WriteLog(this.GetType().Name, ex.Message, Common.LogType.CriticalError, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
+                RepositoryGlobals.Log.WriteLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, ex.Message, Common.LogType.CriticalError, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
                 return false;
             }
         }
@@ -71,7 +72,7 @@ namespace Repository.Services
             }
             catch (Exception ex)
             {
-                RepositoryGlobals.Log.WriteLog(this.GetType().Name, ex.Message, Common.LogType.CriticalError, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
+                RepositoryGlobals.Log.WriteLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, ex.Message, Common.LogType.CriticalError, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
                 return false;
             }
             return true;
@@ -102,9 +103,62 @@ namespace Repository.Services
             }
             catch (Exception ex)
             {
-                RepositoryGlobals.Log.WriteLog(this.GetType().Name, ex.Message, Common.LogType.CriticalError, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
+                RepositoryGlobals.Log.WriteLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, ex.Message, Common.LogType.CriticalError, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
                 return false;
             }
+        }
+
+        public Spider GetSpider(int userId, int spiderId)
+        {
+            Spider spider = new();
+            try
+            {
+                using (SqliteConnection conn = new(_connParam.GetLocalConnectionString()))
+                {
+                    conn.Open();
+                    using (SqliteCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.Parameters.Add("@SPIDER_ID", SqliteType.Integer).Value = spiderId;
+                        cmd.Parameters.Add("@USER_ID", SqliteType.Integer).Value = userId;
+                        cmd.CommandText = "SELECT * FROM Spiders WHERE User_Id = @USER_ID AND Spider_Id = @SPIDER_ID";
+                        SqliteDataReader reader = cmd.ExecuteReader();
+                        if (reader.Read())
+                        {
+                            spider.UserId = int.Parse(reader["User_Id"].ToString());
+                            spider.SpiderId = int.Parse(reader["Spider_Id"].ToString());
+                            spider.Name = reader["Name"].ToString();
+                            spider.Type = reader["Type"].ToString();
+                            spider.Species = reader["Species"].ToString();
+                            if (!string.IsNullOrEmpty(reader["Birth_Date"].ToString()))
+                            {
+                                spider.BirthDate = DateOnly.ParseExact(reader["Birth_Date"].ToString(), "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+                            }
+                            if (!string.IsNullOrEmpty(reader["Purchase_Date"].ToString()))
+                            {
+                                spider.PurchaseDate = DateOnly.ParseExact(reader["Purchase_Date"].ToString(), "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+                            }
+                            if (!string.IsNullOrEmpty(reader["Last_Feeding_Date"].ToString()))
+                            {
+                                spider.LastFeedingDate = DateOnly.ParseExact(reader["Last_Feeding_Date"].ToString(), "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+                            }
+                            if (!string.IsNullOrEmpty(reader["Death_Date"].ToString()))
+                            {
+                                spider.DeathDate = DateOnly.ParseExact(reader["Death_Date"].ToString(), "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+                            }
+                            spider.IsActive = Convert.ToBoolean(reader["Is_Active"]);
+                            spider.ImagePath = reader["Image_Path"].ToString();
+                            spider.Sex = reader["Sex"].ToString();
+                            return spider;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                RepositoryGlobals.Log.WriteLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, ex.Message, Common.LogType.CriticalError, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
+                return null;
+            }
+            return null;
         }
 
         public ObservableCollection<Spider> GetUserSpiders(int userId)
@@ -157,7 +211,7 @@ namespace Repository.Services
             }
             catch (Exception ex)
             {
-                RepositoryGlobals.Log.WriteLog(this.GetType().Name, ex.Message, Common.LogType.CriticalError, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
+                RepositoryGlobals.Log.WriteLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, ex.Message, Common.LogType.CriticalError, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
                 return spiders;
             }
         }
@@ -186,7 +240,7 @@ namespace Repository.Services
             }
             catch (Exception ex)
             {
-                RepositoryGlobals.Log.WriteLog(this.GetType().Name, ex.Message, Common.LogType.CriticalError, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
+                RepositoryGlobals.Log.WriteLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, ex.Message, Common.LogType.CriticalError, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
                 return count;
             }
             return count;
@@ -227,7 +281,7 @@ namespace Repository.Services
             }
             catch (Exception ex)
             {
-                RepositoryGlobals.Log.WriteLog(this.GetType().Name, ex.Message, Common.LogType.Error, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
+                RepositoryGlobals.Log.WriteLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, ex.Message, Common.LogType.Error, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
                 return false;
             }
         }

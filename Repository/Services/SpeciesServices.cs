@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -45,7 +46,7 @@ namespace Repository.Services
             }
             catch (Exception ex)
             {
-                RepositoryGlobals.Log.WriteLog(this.GetType().Name, ex.Message, Common.LogType.CriticalError, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
+                RepositoryGlobals.Log.WriteLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, ex.Message, Common.LogType.CriticalError, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
                 return speciesList;
             }
             return speciesList;

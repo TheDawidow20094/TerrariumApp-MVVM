@@ -1,4 +1,5 @@
-﻿using Common.Translation;
+﻿using Common.Models;
+using Common.Translation;
 using SQLitePCL;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,7 @@ namespace TerrariumApp.Views.UsersControls
             SettingsTranslation translation = Globals.Translation.SettingsTranslation;
             tblLanguage.Text = translation.Language;
             btnConfirm.Content = translation.ConfirmButton;
+            tbSpidersAltViewText.Text = translation.SpiderAltView;
         }
 
         private void SelectCurrentLanguage()
@@ -71,6 +73,9 @@ namespace TerrariumApp.Views.UsersControls
 
         private void btnConfirm_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
+            Globals.IsSpiderAlternativeView = (bool)tbSpiderAltView.IsChecked;
+            Globals.ApplicationConfig.SpiderAlternativeView = (bool)tbSpiderAltView.IsChecked;
+            Globals.ApplicationConfig.SerializeObject();
             if (!string.IsNullOrEmpty(_selectedLanguage))
             {
                 Globals.SetNewLanguage(_selectedLanguage);
@@ -79,6 +84,11 @@ namespace TerrariumApp.Views.UsersControls
             {
                 VisualElementsHelper.GetMainMenuUserControl().OpenPage(MainMenuPages.HomePage);
             }
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            tbSpiderAltView.IsChecked = Globals.ApplicationConfig.SpiderAlternativeView;
         }
     }
 }

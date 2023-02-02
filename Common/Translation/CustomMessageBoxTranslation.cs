@@ -31,5 +31,6 @@ namespace Common.Translation
         public string ReproductionAddingError { get; set; }
         public string ConfirmSelectedReproductionToDelete { get; set; }
         public string ReproductionRemoveError { get; set; }
+        public string SpiderDetailsError { get; set; }
     }
 }

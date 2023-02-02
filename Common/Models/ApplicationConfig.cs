@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,6 +13,7 @@ namespace Common.Models
         public string AppVersion { get; set; }
         public int LastLoggedUserId { get; set; }
         public string AppLanguage { get; set; }
+        public bool SpiderAlternativeView { get; set; }
 
         /// <summary>
         /// Func serizlize and save properties of this object
@@ -33,7 +35,7 @@ namespace Common.Models
             catch (Exception ex)
             {
                 Log log = new Log();
-                log.WriteLog(this.GetType().Name, ex.Message, LogType.Error);
+                log.WriteLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, ex.Message, LogType.Error);
             }            
         }
     }

@@ -9,7 +9,8 @@ Include:
 -Unit tests
 
 Version Alpha 1.1
--Add Copulations
+-Add copulations
+-Add spiders alternative view 
 -Disable expand empty combobox
 -Add many spiders mode
 -Bugs fixing

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.Common;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -53,7 +54,7 @@ namespace Repository.Services
             }
             catch (Exception ex)
             {
-                RepositoryGlobals.Log.WriteLog(this.GetType().Name, ex.Message, LogType.Error, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
+                RepositoryGlobals.Log.WriteLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, ex.Message, LogType.Error, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
                 return null;
             }
             return user;
@@ -84,7 +85,7 @@ namespace Repository.Services
             }
             catch (Exception ex)
             {
-                RepositoryGlobals.Log.WriteLog(this.GetType().Name, ex.Message, LogType.Error, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
+                RepositoryGlobals.Log.WriteLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, ex.Message, LogType.Error, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
                 return false;
             }
         }
@@ -127,7 +128,7 @@ namespace Repository.Services
             }
             catch (Exception ex)
             {
-                RepositoryGlobals.Log.WriteLog(this.GetType().Name, ex.Message, LogType.CriticalError, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
+                RepositoryGlobals.Log.WriteLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, ex.Message, LogType.CriticalError, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
                 return null;
             }
             return user;
@@ -157,7 +158,7 @@ namespace Repository.Services
             }
             catch (Exception ex)
             {
-                RepositoryGlobals.Log.WriteLog(this.GetType().Name, ex.Message, LogType.CriticalError, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
+                RepositoryGlobals.Log.WriteLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, ex.Message, LogType.CriticalError, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
                 return null;
             }
             return users;

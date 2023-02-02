@@ -10,5 +10,6 @@ namespace Common.Translation
     {
         public string Language { get; set; }
         public string ConfirmButton { get; set; }
+        public string SpiderAltView { get; set; }
     }
 }

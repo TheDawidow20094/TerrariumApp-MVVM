@@ -28,9 +28,10 @@ namespace TerrariumApp.Views.UsersControls
         public SpidersUserControl()
         {
             InitializeComponent();
+            Globals.IsSpiderAlternativeView = false;
             TranslateHeaders();
             SpidersViewModel viewModel = new();
-            this.DataContext = viewModel;            
+            this.DataContext = viewModel;
 
             viewModel.ShowMessageBoxDeletingSpiderFailed = () =>
             {
@@ -39,7 +40,7 @@ namespace TerrariumApp.Views.UsersControls
         }
 
         private void dgSpiders_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
+        {            
             if (e.Key == Key.Delete)
             {
                 e.Handled = true;
@@ -104,6 +105,21 @@ namespace TerrariumApp.Views.UsersControls
             isActiveHeader.Header = translation.IsActive;
             deathDateHeader.Header = translation.DeathDate;
             sexHeader.Header = translation.Sex;
+        }
+
+        private void UserControl_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.A && (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
+            {
+                e.Handled = true;
+                VisualElementsHelper.GetMainMenuUserControl().OpenPage(MainMenuPages.SpidersAlternativeView);
+            }
+        }
+
+        private void btnSwitchView_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Globals.IsSpiderAlternativeView = true;
+            VisualElementsHelper.GetMainMenuUserControl().OpenPage(MainMenuPages.SpidersAlternativeView);
         }
     }
 }

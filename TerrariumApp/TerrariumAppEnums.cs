@@ -56,5 +56,7 @@ namespace TerrariumApp
         Reproductions = 7,
         [Description("Stats")]
         Stats = 8,
+        [Description("SpidersAlternativeView")]
+        SpidersAlternativeView = 9,
     }
 }

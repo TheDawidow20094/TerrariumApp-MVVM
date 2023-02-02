@@ -1,59 +1,92 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
+using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using TerrariumApp.Helpers;
 
-namespace TerrariumApp.Views.Windows
+namespace TerrariumApp
 {
     /// <summary>
     /// Interaction logic for LoadingWindow.xaml
     /// </summary>
     public partial class LoadingWindow : Window
     {
-        private bool _canExit = false;
+        private string _loadingText = string.Empty;
+        private Thread _statusThread = null;
+        private LoadingWindow _popUp = null;
+        private AutoResetEvent _popUpStarted = null;
+        private Window _owner;
 
-        public LoadingWindow()
+        public LoadingWindow(string loadingText = "")
         {
             InitializeComponent();
+            if (string.IsNullOrEmpty(_loadingText))
+            {
+                _loadingText = Globals.Translation.LoadingText;
+            }
+            txtblLoadingText.Text = _loadingText;
         }
 
-        public void Start(string loadingText = "")
-        {          
-            this.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            this.Width = this.Owner.ActualWidth / 2;
-            this.Height = this.Owner.ActualHeight / 2;
-            this.Owner.IsEnabled = false;
-            if (string.IsNullOrEmpty(loadingText))
+        public void Start(Window owner = null, string loadingText = "")
+        {
+            try
             {
-                loadingText = Globals.Translation.LoadingText;
+                if (owner != null)
+                {
+                    _owner = owner;
+                    _owner.IsEnabled = false;
+                }
+                _loadingText = loadingText;
+                _statusThread = new Thread(() =>
+                {
+                    _popUp = new LoadingWindow(loadingText);
+                    _popUp.Show();
+                    _popUpStarted.Set();
+                    System.Windows.Threading.Dispatcher.Run();
+                });
+                _statusThread.SetApartmentState(ApartmentState.STA);
+                _statusThread.Priority = ThreadPriority.Normal;
+                _statusThread.Start();
+                _popUpStarted = new AutoResetEvent(false);
+                _popUpStarted.WaitOne();
             }
-            txtblLoadingText.Text = loadingText;
-            this.Show();
+            catch (Exception ex)
+            {
+                Globals.Log.WriteLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, ex.Message, Common.LogType.CriticalError, Globals.LocalUserData.UserId, Globals.LocalUserData.UserName);
+            }
         }
 
         public void Stop()
         {
-            _canExit = true;
-            this.Owner.IsEnabled = true;
-            this.Close();
+            if (_owner != null)
+            {
+                _owner.IsEnabled = true;
+            }
+            if (_popUp != null)
+            {
+                _popUp.Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    _popUp.Close();
+                }));
+            }
         }
 
-        private void wLoadingWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        public void StopAndClose()
         {
-            if (!_canExit)
+            if (_owner != null)
             {
-                e.Cancel = true;
+                _owner.IsEnabled = true;
             }
+            if (_popUp != null)
+            {
+                _popUp.Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    _popUp.Close();
+                }));
+            }
+            Owner = null;
+            this.Close();
         }
     }
 }
+

@@ -27,6 +27,8 @@ namespace TerrariumApp
         public static User LocalUserData = _IUser.GetLocalUserData(ApplicationConfig.LastLoggedUserId);
         public static MainMenuPages LastOpenedPage;
         public static int LastSelectedSpiderId = -1; // this property is using to select in app pages last selected spider (last editing, last added molt ...)
+        public static LoadingWindow LoadingWindow = new();
+        public static bool IsSpiderAlternativeView = ApplicationConfig.SpiderAlternativeView;
 
         public static readonly Brush PrimaryAppColor = GetBrushColor("pirmaryAppColor");
         public static readonly Brush ControlsColor = GetBrushColor("controlsColor");
@@ -41,7 +43,7 @@ namespace TerrariumApp
             }
             catch (Exception ex)
             {
-                Log.WriteLog("Globals", ex.Message, LogType.CriticalError);
+                Log.WriteLog("Globals", "GetApplicationConfig", ex.Message, LogType.CriticalError);
                 throw;
             }
         }
@@ -66,7 +68,7 @@ namespace TerrariumApp
             }
             catch (Exception ex)
             {
-                Log.WriteLog("Globals", ex.Message, LogType.CriticalError);
+                Log.WriteLog("Globals", "GetApplicationTranslation", ex.Message, LogType.CriticalError);
                 throw;
             }
             return JsonConvert.DeserializeObject<AppTranslation>(jsonString);

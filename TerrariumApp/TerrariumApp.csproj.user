@@ -37,6 +37,9 @@
     <Compile Update="Views\UsersControls\SingleSpiderDetails.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\UsersControls\SpidersAlternativeViewUserControl.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\UsersControls\SpidersUserControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -112,6 +115,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\UsersControls\SingleSpiderDetails.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\UsersControls\SpidersAlternativeViewUserControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\UsersControls\SpidersUserControl.xaml">

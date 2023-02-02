@@ -5,9 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TerrariumApp.Views.UsersControls"
              mc:Ignorable="d" 
-             d:DesignHeight="676" d:DesignWidth="1174" Style="{StaticResource UserControlStyle}">
+             d:DesignHeight="676" d:DesignWidth="1174" Style="{StaticResource UserControlStyle}" PreviewKeyDown="UserControl_PreviewKeyDown">
     <Grid>
-        <DataGrid x:Name="dgSpiders" Margin="5" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False" CanUserResizeColumns="False" FontSize="15" ItemsSource="{Binding SpidersList}" SelectedItem="{Binding SelectedSpider}" PreviewKeyDown="dgSpiders_PreviewKeyDown">
+        <Grid.RowDefinitions>
+            <RowDefinition Height ="0.04*"/>
+            <RowDefinition Height ="0.9*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="btnSwitchView" Grid.Row="0" Width="80" Background="White" HorizontalAlignment="Right" Margin="0,3,5,0" Style="{StaticResource BaseButtonStyle}" PreviewMouseLeftButtonDown="btnSwitchView_PreviewMouseLeftButtonDown">
+            <Image Source="pack://application:,,,/Resources/Images/switch.png"/>
+        </Button>
+        <DataGrid x:Name="dgSpiders" Grid.Row="1" Margin="5" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False" CanUserResizeColumns="False" FontSize="15" ItemsSource="{Binding SpidersList}" SelectedItem="{Binding SelectedSpider}" PreviewKeyDown="dgSpiders_PreviewKeyDown">
             <DataGrid.ContextMenu>
                 <ContextMenu>
                     <MenuItem x:Name="miAddSpider" Header="{Binding AddSpiderContextMenuTranslation}" Click="miAddSpider_Click"/>
@@ -26,6 +33,6 @@
                 <DataGridTextColumn x:Name="deathDateHeader" Width="*" Binding="{Binding DeathDate}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btnDeleteSpiderHelper" Visibility="Collapsed" Command="{Binding DeleteReproductionCommand}" CommandParameter="{Binding SelectedFemaleSpider}"/>
+        <Button x:Name="btnDeleteSpiderHelper" Visibility="Collapsed" Command="{Binding DeleteSelectedSpiderCommand}" CommandParameter="{Binding SelectedSpider}"/>
     </Grid>
 </UserControl>

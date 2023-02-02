@@ -83,8 +83,16 @@ namespace TerrariumApp
                 case "tbtnSpiders":
                     spAddInnerMenu.Visibility = Visibility.Collapsed;
                     mainWindow.gridMainContent.Children.Clear();
-                    SpidersUserControl spidersUserControl = new();
-                    mainWindow.gridMainContent.Children.Add(spidersUserControl);
+                    if (Globals.IsSpiderAlternativeView)
+                    {
+                        SpidersAlternativeViewUserControl spidersALternativeViewUserControl = new();
+                        mainWindow.gridMainContent.Children.Add(spidersALternativeViewUserControl);
+                    }
+                    else
+                    {
+                        SpidersUserControl spidersUserControl = new();
+                        mainWindow.gridMainContent.Children.Add(spidersUserControl);
+                    }                    
                     Globals.LastOpenedPage = MainMenuPages.Spiders;
                     break;
                 case "tbtnMolts":
@@ -196,7 +204,10 @@ namespace TerrariumApp
                     tbtnStats.IsChecked = true;
                     MenuButtons_Click(tbtnStats, null);
                     break;
-                default:
+                case MainMenuPages.SpidersAlternativeView:
+                    Globals.IsSpiderAlternativeView = true;
+                    tbtnSpiders.IsChecked = true;
+                    MenuButtons_Click(tbtnSpiders, null);
                     break;
             }
         }

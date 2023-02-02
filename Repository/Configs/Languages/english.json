@@ -25,6 +25,7 @@
     "ReproductionAddingError": "Failed to add copulation!",
     "ConfirmSelectedReproductionToDelete": "Are you sure you want to remove the copulation of the day ",
     "ReproductionRemoveError": "Failed to remove copulation!",
+    "SpiderDetailsError": "Failet to get selected spider data!",
     //Buttons:
     "YesButton": "Yes",
     "NoButton": "No"
@@ -104,6 +105,7 @@
   },
   "SettingsTranslation": {
     "Language": "Language :",
-    "ConfirmButton": "Confirm"
+    "ConfirmButton": "Confirm",
+    "SpiderAltView": "Spiders alternative view :"
   }
 }

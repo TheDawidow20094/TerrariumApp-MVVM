@@ -25,6 +25,7 @@
     "ReproductionAddingError": "Nie udało się dodać kopulacji!",
     "ConfirmSelectedReproductionToDelete": "Czy na pewno chcesz usunąć kopulacje z dnia ",
     "ReproductionRemoveError": "Nie udało się usunąć kopulacji!",
+    "SpiderDetailsError" : "Nie udało się wczytać danych wybranego pająka!",
     //Buttons:
     "YesButton": "Tak",
     "NoButton": "Nie"
@@ -104,6 +105,7 @@
   },
   "SettingsTranslation": {
     "Language": "Język :",
-    "ConfirmButton": "Zatwierdź"
+    "ConfirmButton": "Zatwierdź",
+    "SpiderAltView": "Pająki widok alternatywny :"
   }
 }

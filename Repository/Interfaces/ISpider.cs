@@ -20,5 +20,6 @@ namespace Repository.Interfaces
         /// Return false when exeption
         /// </summary>
         public bool DeleteAllUserSpiders(int userId);
+        public Spider GetSpider(int userId, int spiderId);
     }
 }

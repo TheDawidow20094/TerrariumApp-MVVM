@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
@@ -49,7 +50,7 @@ namespace Repository.Services
             }
             catch (Exception ex)
             {
-                RepositoryGlobals.Log.WriteLog(this.GetType().Name, ex.Message, LogType.Error, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
+                RepositoryGlobals.Log.WriteLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, ex.Message, LogType.Error, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
                 return false;
             }
         }
@@ -72,7 +73,7 @@ namespace Repository.Services
             }
             catch (Exception ex)
             {
-                RepositoryGlobals.Log.WriteLog(this.GetType().Name, ex.Message, LogType.Error, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
+                RepositoryGlobals.Log.WriteLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, ex.Message, LogType.Error, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
                 return false;
             }
         }
@@ -100,7 +101,7 @@ namespace Repository.Services
             }
             catch (Exception ex)
             {
-                RepositoryGlobals.Log.WriteLog(this.GetType().Name, ex.Message, LogType.Error, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
+                RepositoryGlobals.Log.WriteLog(this.GetType().Name, ex.Message, MethodBase.GetCurrentMethod().Name, LogType.Error, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
                 return false;
             }
         }
@@ -137,7 +138,7 @@ namespace Repository.Services
             }
             catch (Exception ex)
             {
-                RepositoryGlobals.Log.WriteLog(this.GetType().Name, ex.Message, LogType.Error, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
+                RepositoryGlobals.Log.WriteLog(this.GetType().Name, ex.Message, MethodBase.GetCurrentMethod().Name, LogType.Error, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
                 return molts;
             }
             return molts;
@@ -167,7 +168,7 @@ namespace Repository.Services
             }
             catch (Exception ex)
             {
-                RepositoryGlobals.Log.WriteLog(this.GetType().Name, ex.Message, LogType.Error, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
+                RepositoryGlobals.Log.WriteLog(this.GetType().Name, ex.Message, MethodBase.GetCurrentMethod().Name, LogType.Error, RepositoryGlobals.logUserId, RepositoryGlobals.logUserName);
                 return count;
             }
             return count;

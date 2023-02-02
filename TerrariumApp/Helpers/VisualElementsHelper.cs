@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows;
+using System.Reflection;
 
 namespace TerrariumApp.Helpers
 {
@@ -71,7 +72,7 @@ namespace TerrariumApp.Helpers
             mainWindow.gridMainMenu.Children.Add(new MainMenuUserControl());
             mainWindow.gridFooter.Children.Add(new AppFooterUserControl());
             GetMainMenuUserControl().OpenPage(MainMenuPages.HomePage);
-            Globals.Log.WriteLog("VisualElementsHelper", "Reloading main app controls", Common.LogType.ImportantMessage, Globals.LocalUserData.UserId, Globals.LocalUserData.UserName);
+            Globals.Log.WriteLog("VisualElementsHelper", "ReloadMainAppControls", "Reloading main app controls", Common.LogType.ImportantMessage, Globals.LocalUserData.UserId, Globals.LocalUserData.UserName);
         }
     }
 }

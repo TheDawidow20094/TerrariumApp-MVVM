@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TerrariumApp.Helpers;
 using TerrariumApp.VievsModels;
+using TerrariumApp.Views.Windows;
 
 namespace TerrariumApp.Views.UsersControls
 {
@@ -41,8 +43,8 @@ namespace TerrariumApp.Views.UsersControls
             };
         }
 
-        private void btnAddMolt_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {            
+        private async void btnAddMolt_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
             if (CanAddMolt())
             {
                 Globals.LastSelectedSpiderId = (cbSpiders.SelectedItem as Spider).SpiderId;
@@ -66,7 +68,7 @@ namespace TerrariumApp.Views.UsersControls
                 }
             }
         }
-
+        
         private bool CanAddMolt()
         {
             bool result = true;

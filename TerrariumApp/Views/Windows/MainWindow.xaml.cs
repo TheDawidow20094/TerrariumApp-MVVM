@@ -44,5 +44,14 @@ namespace TerrariumApp
             RepositoryGlobals.logUserName = Globals.LocalUserData.UserName;
             VisualElementsHelper.GetMainMenuUserControl().OpenPage(MainMenuPages.HomePage);
         }
+
+        private void wMianWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {            
+            Globals.LoadingWindow.StopAndClose();            
+            GC.SuppressFinalize(Globals.LoadingWindow);
+            Globals.LoadingWindow = null;
+            GC.Collect();
+            Application.Current.Shutdown();
+        }
     }
 }

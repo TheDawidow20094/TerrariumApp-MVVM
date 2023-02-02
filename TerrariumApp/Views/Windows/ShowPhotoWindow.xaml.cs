@@ -50,20 +50,20 @@ namespace TerrariumApp.Views.Windows
 
         private void wShowPhoto_Loaded(object sender, RoutedEventArgs e)
         {
-            LoadingWindow loading = new();
-            loading.Owner = this;
-            loading.Start();            
+            //LoadingWindow loading = new();
+            //loading.Owner = this;
+            //loading.Start();            
             this.Title = _windowTitle;
             if (!File.Exists(_imagePath))
             {
-                loading.Stop();
+                //loading.Stop();
                 CustomMessageBox.ShowOK(_translation.ErrorCaption, _translation.PhotoNoFound, CustomMessageBoxImage.Error);
                 this.Close();
             }
             else
             {
                 image.Source = new BitmapImage(new Uri(_imagePath));
-                loading.Stop();
+                //loading.Stop();
             }
         }
     }

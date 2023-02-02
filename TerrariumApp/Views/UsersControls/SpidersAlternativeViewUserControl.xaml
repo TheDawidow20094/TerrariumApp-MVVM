@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="TerrariumApp.Views.UsersControls.SpidersAlternativeViewUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TerrariumApp.Views.UsersControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="676" d:DesignWidth="1174" Style="{StaticResource UserControlStyle}" Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height ="0.04*"/>
+            <RowDefinition Height ="0.9*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="btnSwitchView" Grid.Row="0" Width="80" Background="White" HorizontalAlignment="Right" Margin="0,3,15,0" Style="{StaticResource BaseButtonStyle}" PreviewMouseLeftButtonDown = "btnSwitchView_PreviewMouseLeftButtonDown">
+            <Image Source="pack://application:,,,/Resources/Images/switch.png"/>
+        </Button>
+        <ScrollViewer x:Name="svMain" Grid.Row="1"/>
+    </Grid>
+</UserControl>

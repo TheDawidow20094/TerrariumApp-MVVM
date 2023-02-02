@@ -5,6 +5,7 @@ using Repository.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -65,7 +66,7 @@ namespace TerrariumApp.Views.Windows
                     Globals.ApplicationConfig.LastLoggedUserId = user.UserId;
                     Globals.ApplicationConfig.SerializeObject();
                     Globals.SetNewLanguage(_selectedLanguage, false);
-                    Globals.Log.WriteLog(this.GetType().Name, "First run creadted user!", LogType.ImportantMessage, user.UserId, user.UserName);
+                    Globals.Log.WriteLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, "First run creadted user!", LogType.ImportantMessage, user.UserId, user.UserName);
                     _canClose = true;
                     this.Close();
                 }

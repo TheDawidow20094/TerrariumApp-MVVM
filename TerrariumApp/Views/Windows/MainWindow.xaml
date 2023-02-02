@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TerrariumApp"
         mc:Ignorable="d"
-        x:Name="wMianWindow" Title="Terrarium App" d:Height="590" d:Width="960" MaxHeight="1080" MaxWidth="1920" MinHeight="620" MinWidth="1303" WindowStartupLocation="CenterScreen">
+        x:Name="wMianWindow" Title="Terrarium App" d:Height="590" d:Width="960" MaxHeight="1080" MaxWidth="1920" MinHeight="620" MinWidth="1303" WindowStartupLocation="CenterScreen" Closing="wMianWindow_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.17*"/>

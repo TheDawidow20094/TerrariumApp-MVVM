@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -54,7 +55,7 @@ namespace TerrariumApp.Views.UsersControls
             }
             else
             {
-                Globals.Log.WriteLog(this.GetType().Name, "Image file not found!", Common.LogType.ImportantMessage, Globals.LocalUserData.UserId, Globals.LocalUserData.UserName);
+                Globals.Log.WriteLog(this.GetType().Name, MethodBase.GetCurrentMethod().Name, "Image file not found!", Common.LogType.ImportantMessage, Globals.LocalUserData.UserId, Globals.LocalUserData.UserName);
                 imageSpiderImage.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/Images/addPhoto.png"));
             }
         }

@@ -5,14 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TerrariumApp.Views.UsersControls"
              mc:Ignorable="d" 
-             d:DesignHeight="676" d:DesignWidth="1174" Style="{StaticResource UserControlStyle}">
+             d:DesignHeight="676" d:DesignWidth="1174" Style="{StaticResource UserControlStyle}" Loaded="UserControl_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.3*"/>
             <ColumnDefinition Width="0.7*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.6*"/>
             <RowDefinition Height="0.1*"/>
         </Grid.RowDefinitions>
         <TextBlock x:Name="tblLanguage" Grid.Column="0" Grid.Row="0" Style="{StaticResource InformationTextBlock}" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,88,0,0"/>
@@ -24,6 +25,8 @@
                 <Image Source="pack://application:,,,/Resources/Images/unitedKingdomFlag.png"/>
             </Button>
         </StackPanel>
-        <Button x:Name="btnConfirm" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource GreenButtonStyle}" Margin="10" Width="250" PreviewMouseDown="btnConfirm_PreviewMouseDown"/>
+        <TextBlock x:Name="tbSpidersAltViewText" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,0,0" Style="{StaticResource InformationTextBlock}"/>
+        <ToggleButton x:Name="tbSpiderAltView" Grid.Column="1" Grid.Row="1" Style="{StaticResource ToggleSwitch}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,10,0,0"/>
+        <Button x:Name="btnConfirm" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource GreenButtonStyle}" Margin="10" Width="250" PreviewMouseDown="btnConfirm_PreviewMouseDown"/>
     </Grid>
 </UserControl>
